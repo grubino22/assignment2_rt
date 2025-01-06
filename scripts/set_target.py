@@ -58,7 +58,7 @@ def main():
     global pub_pos_vel
     global client
 
-    rospy.init_node('reach_goal')
+    rospy.init_node('set_target')
     
     pub_pos_vel = rospy.Publisher('/robot_position_velocity', robot_par, queue_size=10)
     rospy.Subscriber('/odom', Odometry, odom_Callback)
