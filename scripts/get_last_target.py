@@ -15,9 +15,9 @@ def process_target_request(req):
     global last_target
     if last_target is None:
         rospy.logwarn("No target available")
-        return Last_TargetResponse(success=False)
-    target_info = last_target.goal.target_pose
-    return Last_TargetResponse(target_info, success=True)
+        return Last_TargetResponse()
+    target_info = last_target.goal.target_pose.pose
+    return Last_TargetResponse(target_info)
     
 def service_last_goal():
     rospy.init_node('get_last_target')
