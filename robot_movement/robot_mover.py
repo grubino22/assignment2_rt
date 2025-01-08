@@ -17,13 +17,13 @@ class Robot(Node):
     def move_robot(self):
         velocity = Twist()
         if 2.0 <= self.position_x <= 9.0:
-            velocity.linear.x = 2
-            velocity.angular.z = 0
+            velocity.linear.x = 1.0
+            velocity.angular.z = 0.0
         elif self.position_x > 9.0:
-            velocity.linear.x = 1
+            velocity.linear.x = 1.0
             velocity.angular.z = 1.57
         elif self.position_x < 2.0:
-            velocity.linear.x = 1
+            velocity.linear.x = 1.0
             velocity.angular.z = -1.57
         
         self.publisher_.publish(velocity)

@@ -11,7 +11,7 @@ Ensure you have the following installed:
 ### Installing `robot_urdf`
 Navigate to your workspace:
 ```bash
-cd ~/dev_ws
+cd ~/dev_ws/src
 ```
 Clone the repository into your ROS 2 workspace, e.g., ~/dev_ws/src.
 ```bash
@@ -25,7 +25,7 @@ git checkout ros2
 ### Robot Movement pkg Installation
 Navigate to your workspace:
 ```bash
-cd ~/dev_ws
+cd ~/dev_ws/src
 ```
 Clone the repository into your ROS 2 workspace:
 ```bash
@@ -35,7 +35,7 @@ Change branch to 'ros2':
 ```bash
 git checkout ros2
 ```
-Build the package:
+Go back to your workspace and build the package:
 ```bash
 colcon build
 ```
