@@ -1,0 +1,173 @@
+\hypertarget{set__target_8py}{}\doxysection{scripts/set\+\_\+target.py File Reference}
+\label{set__target_8py}\index{scripts/set\_target.py@{scripts/set\_target.py}}
+
+
+A R\+OS client node to set and cancel goals for a robot using an action server.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{set__target_8py_a5407c5f8b041023280e6659ff5f001ff}{set\+\_\+target.\+feedback\+\_\+\+Callback}} (feedback)
+\begin{DoxyCompactList}\small\item\em Callback function for feedback from the action server. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{set__target_8py_a8fa43a59fa7fb58ac7735bb1966ce0c8}{set\+\_\+target.\+set\+\_\+goal}} (client, x, y)
+\begin{DoxyCompactList}\small\item\em Sends a goal to the action server. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{set__target_8py_a3ae65d5deaa32fb4e092073f7d9c0fa5}{set\+\_\+target.\+cancel\+\_\+goal}} (client)
+\begin{DoxyCompactList}\small\item\em Cancels the currently active goal. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{set__target_8py_a3542b8da81199c6d0c412c5ea044e4f8}{set\+\_\+target.\+odom\+\_\+\+Callback}} (msg)
+\begin{DoxyCompactList}\small\item\em Callback function for the odometry topic subscriber. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{set__target_8py_acf4c60f292a15ebb123b96e8dab92b55}{set\+\_\+target.\+get\+\_\+coordinates}} ()
+\begin{DoxyCompactList}\small\item\em Gets user input for goal coordinates. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{set__target_8py_ab31a3fedd874806d1f9d1887246ef569}{set\+\_\+target.\+main}} ()
+\begin{DoxyCompactList}\small\item\em Main function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{set__target_8py_ac2b33976befa30970f95d2c15bea8656}\label{set__target_8py_ac2b33976befa30970f95d2c15bea8656}} 
+{\bfseries set\+\_\+target.\+pub\+\_\+pos\+\_\+vel} = None
+\item 
+\mbox{\Hypertarget{set__target_8py_a82372121e9b5dad2300255fe51121cf2}\label{set__target_8py_a82372121e9b5dad2300255fe51121cf2}} 
+{\bfseries set\+\_\+target.\+client} = None
+\item 
+\mbox{\Hypertarget{set__target_8py_a9672b696bcf8b8b30ccb0d724889462c}\label{set__target_8py_a9672b696bcf8b8b30ccb0d724889462c}} 
+{\bfseries set\+\_\+target.\+file}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A R\+OS client node to set and cancel goals for a robot using an action server. 
+
+\begin{DoxyAuthor}{Author}
+Giuseppe Rubino 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+28/03/2025
+\end{DoxyDate}
+Publishes to\+:~\newline
+
+\begin{DoxyItemize}
+\item /robot\+\_\+position\+\_\+velocity \+: Publishes the robot\textquotesingle{}s current position and velocity.
+\end{DoxyItemize}
+
+Subscribes to\+:~\newline
+
+\begin{DoxyItemize}
+\item /odom \+: Receives odometry data from the robot.
+\end{DoxyItemize}
+
+Uses action server\+:~\newline
+
+\begin{DoxyItemize}
+\item /reaching\+\_\+goal \+: Sends goal position to be reached by the robot.
+\end{DoxyItemize}
+
+Description\+: ~\newline
+ This node allows the user to set goals, cancel them, and track the robot position and velocity. The action client communicates user requests to the action server. When a new goal is set, the server processes the request and commands the robot to navigate towards the specified coordinates. If the user opts to cancel a goal, the server first checks if an active or pending goal exists. If found, it terminates the goal and informs the client of the cancellation. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{set__target_8py_a3ae65d5deaa32fb4e092073f7d9c0fa5}\label{set__target_8py_a3ae65d5deaa32fb4e092073f7d9c0fa5}} 
+\index{set\_target.py@{set\_target.py}!cancel\_goal@{cancel\_goal}}
+\index{cancel\_goal@{cancel\_goal}!set\_target.py@{set\_target.py}}
+\doxysubsubsection{\texorpdfstring{cancel\_goal()}{cancel\_goal()}}
+{\footnotesize\ttfamily def set\+\_\+target.\+cancel\+\_\+goal (\begin{DoxyParamCaption}\item[{}]{client }\end{DoxyParamCaption})}
+
+
+
+Cancels the currently active goal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em client} & The Simple\+Action\+Client instance.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None
+\end{DoxyReturn}
+Cancels the current goal if one is active or pending. If cancellation is successful, a confirmation message is displayed; otherwise, a warning is logged. \mbox{\Hypertarget{set__target_8py_a5407c5f8b041023280e6659ff5f001ff}\label{set__target_8py_a5407c5f8b041023280e6659ff5f001ff}} 
+\index{set\_target.py@{set\_target.py}!feedback\_Callback@{feedback\_Callback}}
+\index{feedback\_Callback@{feedback\_Callback}!set\_target.py@{set\_target.py}}
+\doxysubsubsection{\texorpdfstring{feedback\_Callback()}{feedback\_Callback()}}
+{\footnotesize\ttfamily def set\+\_\+target.\+feedback\+\_\+\+Callback (\begin{DoxyParamCaption}\item[{}]{feedback }\end{DoxyParamCaption})}
+
+
+
+Callback function for feedback from the action server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em feedback} & The feedback message containing the robot\textquotesingle{}s actual pose and status.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None
+\end{DoxyReturn}
+Logs the robot\textquotesingle{}s current pose and status when the target is reached. Prompts the user to set a new goal or quit. \mbox{\Hypertarget{set__target_8py_acf4c60f292a15ebb123b96e8dab92b55}\label{set__target_8py_acf4c60f292a15ebb123b96e8dab92b55}} 
+\index{set\_target.py@{set\_target.py}!get\_coordinates@{get\_coordinates}}
+\index{get\_coordinates@{get\_coordinates}!set\_target.py@{set\_target.py}}
+\doxysubsubsection{\texorpdfstring{get\_coordinates()}{get\_coordinates()}}
+{\footnotesize\ttfamily def set\+\_\+target.\+get\+\_\+coordinates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets user input for goal coordinates. 
+
+\begin{DoxyReturn}{Returns}
+A tuple containing the x and y coordinates.
+\end{DoxyReturn}
+Prompts the user to input valid numeric values for the x and y coordinates. Ensures only valid numeric inputs are accepted. \mbox{\Hypertarget{set__target_8py_ab31a3fedd874806d1f9d1887246ef569}\label{set__target_8py_ab31a3fedd874806d1f9d1887246ef569}} 
+\index{set\_target.py@{set\_target.py}!main@{main}}
+\index{main@{main}!set\_target.py@{set\_target.py}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def set\+\_\+target.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main function. 
+
+\begin{DoxyReturn}{Returns}
+None
+\end{DoxyReturn}
+This function initializes the R\+OS node, sets up publishers and subscribers, and continuously listens for user commands to set or cancel goals. \mbox{\Hypertarget{set__target_8py_a3542b8da81199c6d0c412c5ea044e4f8}\label{set__target_8py_a3542b8da81199c6d0c412c5ea044e4f8}} 
+\index{set\_target.py@{set\_target.py}!odom\_Callback@{odom\_Callback}}
+\index{odom\_Callback@{odom\_Callback}!set\_target.py@{set\_target.py}}
+\doxysubsubsection{\texorpdfstring{odom\_Callback()}{odom\_Callback()}}
+{\footnotesize\ttfamily def set\+\_\+target.\+odom\+\_\+\+Callback (\begin{DoxyParamCaption}\item[{}]{msg }\end{DoxyParamCaption})}
+
+
+
+Callback function for the odometry topic subscriber. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & The received Odometry message containing position and velocity information.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None
+\end{DoxyReturn}
+Extracts the robot\textquotesingle{}s position (x, y) and velocity (linear and angular) from the Odometry message and publishes this data to the {\ttfamily /robot\+\_\+position\+\_\+velocity} topic. \mbox{\Hypertarget{set__target_8py_a8fa43a59fa7fb58ac7735bb1966ce0c8}\label{set__target_8py_a8fa43a59fa7fb58ac7735bb1966ce0c8}} 
+\index{set\_target.py@{set\_target.py}!set\_goal@{set\_goal}}
+\index{set\_goal@{set\_goal}!set\_target.py@{set\_target.py}}
+\doxysubsubsection{\texorpdfstring{set\_goal()}{set\_goal()}}
+{\footnotesize\ttfamily def set\+\_\+target.\+set\+\_\+goal (\begin{DoxyParamCaption}\item[{}]{client,  }\item[{}]{x,  }\item[{}]{y }\end{DoxyParamCaption})}
+
+
+
+Sends a goal to the action server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em client} & The Simple\+Action\+Client instance. \\
+\hline
+{\em x} & The x-\/coordinate of the goal. \\
+\hline
+{\em y} & The y-\/coordinate of the goal.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None
+\end{DoxyReturn}
+Sends a goal position (x, y) to the action server and waits for confirmation. If the server is not available, it logs an error message. 

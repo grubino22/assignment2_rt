@@ -1,0 +1,102 @@
+\hypertarget{get__last__target_8py}{}\doxysection{scripts/get\+\_\+last\+\_\+target.py File Reference}
+\label{get__last__target_8py}\index{scripts/get\_last\_target.py@{scripts/get\_last\_target.py}}
+
+
+A R\+OS service node to provide the last received target goal from the action server.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{get__last__target_8py_a8794a6560868cd9916e2a7f76fcf35f8}{get\+\_\+last\+\_\+target.\+target\+\_\+\+Callback}} (msg)
+\begin{DoxyCompactList}\small\item\em Callback function for the target message. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{get__last__target_8py_a7d2fc3da8ad376efef340672c4e9919f}{get\+\_\+last\+\_\+target.\+process\+\_\+target\+\_\+request}} (req)
+\begin{DoxyCompactList}\small\item\em Service handler function for processing requests for the last received target. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{get__last__target_8py_a86f046e6f200d6ac2726f084baeba162}{get\+\_\+last\+\_\+target.\+service\+\_\+last\+\_\+goal}} ()
+\begin{DoxyCompactList}\small\item\em Main function to initialize the R\+OS node and handle the service. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{get__last__target_8py_a63a4fa2ee971ca57234ede86fb05353c}\label{get__last__target_8py_a63a4fa2ee971ca57234ede86fb05353c}} 
+{\bfseries get\+\_\+last\+\_\+target.\+last\+\_\+target} = None
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A R\+OS service node to provide the last received target goal from the action server. 
+
+\begin{DoxyAuthor}{Author}
+Giuseppe Rubino 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+28/03/2025
+\end{DoxyDate}
+Subscribes to\+:~\newline
+
+\begin{DoxyItemize}
+\item /reaching\+\_\+goal/goal \+: Receives goal messages from the action server.
+\end{DoxyItemize}
+
+Uses action server\+:~\newline
+
+\begin{DoxyItemize}
+\item /reaching\+\_\+goal \+: The action server that receives target goals.
+\end{DoxyItemize}
+
+Description\+: ~\newline
+ This node subscribes to the /reaching\+\_\+goal/goal topic to receive the latest target goal and stores it. It provides a service, /get\+\_\+last\+\_\+goal, that returns the last received goal information when requested. The service response contains the position (x, y, z) of the last target goal. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{get__last__target_8py_a7d2fc3da8ad376efef340672c4e9919f}\label{get__last__target_8py_a7d2fc3da8ad376efef340672c4e9919f}} 
+\index{get\_last\_target.py@{get\_last\_target.py}!process\_target\_request@{process\_target\_request}}
+\index{process\_target\_request@{process\_target\_request}!get\_last\_target.py@{get\_last\_target.py}}
+\doxysubsubsection{\texorpdfstring{process\_target\_request()}{process\_target\_request()}}
+{\footnotesize\ttfamily def get\+\_\+last\+\_\+target.\+process\+\_\+target\+\_\+request (\begin{DoxyParamCaption}\item[{}]{req }\end{DoxyParamCaption})}
+
+
+
+Service handler function for processing requests for the last received target. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em req} & The request for the last target goal.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Last\+\_\+\+Target\+Response containing the information of the last goal.
+\end{DoxyReturn}
+This function checks if a target has been received. If no target is available, it logs a warning and returns an empty response. If a target is available, it returns the position of the last target goal. \mbox{\Hypertarget{get__last__target_8py_a86f046e6f200d6ac2726f084baeba162}\label{get__last__target_8py_a86f046e6f200d6ac2726f084baeba162}} 
+\index{get\_last\_target.py@{get\_last\_target.py}!service\_last\_goal@{service\_last\_goal}}
+\index{service\_last\_goal@{service\_last\_goal}!get\_last\_target.py@{get\_last\_target.py}}
+\doxysubsubsection{\texorpdfstring{service\_last\_goal()}{service\_last\_goal()}}
+{\footnotesize\ttfamily def get\+\_\+last\+\_\+target.\+service\+\_\+last\+\_\+goal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main function to initialize the R\+OS node and handle the service. 
+
+\begin{DoxyReturn}{Returns}
+None
+\end{DoxyReturn}
+This function initializes the R\+OS node, sets up the subscriber to listen for incoming target goals, and provides a service to request the last received goal. It continuously waits for incoming requests. \mbox{\Hypertarget{get__last__target_8py_a8794a6560868cd9916e2a7f76fcf35f8}\label{get__last__target_8py_a8794a6560868cd9916e2a7f76fcf35f8}} 
+\index{get\_last\_target.py@{get\_last\_target.py}!target\_Callback@{target\_Callback}}
+\index{target\_Callback@{target\_Callback}!get\_last\_target.py@{get\_last\_target.py}}
+\doxysubsubsection{\texorpdfstring{target\_Callback()}{target\_Callback()}}
+{\footnotesize\ttfamily def get\+\_\+last\+\_\+target.\+target\+\_\+\+Callback (\begin{DoxyParamCaption}\item[{}]{msg }\end{DoxyParamCaption})}
+
+
+
+Callback function for the target message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & The received Planning\+Action\+Goal message containing the goal information.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None
+\end{DoxyReturn}
+This function is triggered whenever a new goal is received. It logs the received goal position (x, y, z). 

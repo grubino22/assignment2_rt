@@ -1,0 +1,114 @@
+\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{Overview}\label{md__r_e_a_d_m_e_autotoc_md1}
+This package provides a comprehensive suite of tools to control and monitor a robot\textquotesingle{}s movements in a R\+OS environment. It includes nodes for setting targets, retrieving the last set target, and a custom message and service for interfacing with the robot\textquotesingle{}s positioning system.\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysection{Package Added Contents}\label{md__r_e_a_d_m_e_autotoc_md2}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysubsection{Nodes}\label{md__r_e_a_d_m_e_autotoc_md3}
+
+\begin{DoxyItemize}
+\item {\bfseries{\mbox{\hyperlink{get__last__target_8py}{get\+\_\+last\+\_\+target.\+py}}}}\+: Subscribes to goal messages and provides a service to retrieve the last received target.
+\item {\bfseries{\mbox{\hyperlink{set__target_8py}{set\+\_\+target.\+py}}}}\+: Allows users to set new targets interactively and cancels them if needed. It also publishes robot velocity and position updates.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysubsection{Custom Message}\label{md__r_e_a_d_m_e_autotoc_md4}
+
+\begin{DoxyItemize}
+\item {\bfseries{robot\+\_\+par.\+msg}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{float64 x}
+\DoxyCodeLine{float64 y}
+\DoxyCodeLine{float64 vel\_x}
+\DoxyCodeLine{loat64 vel\_z}
+\end{DoxyCode}
+
+\end{DoxyItemize}
+
+This message tracks the robot\textquotesingle{}s position and velocity.\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysubsection{Custom Service}\label{md__r_e_a_d_m_e_autotoc_md5}
+
+\begin{DoxyItemize}
+\item {\bfseries{Last\+\_\+\+Target.\+srv}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/-\/-\/}
+\DoxyCodeLine{geometry\_msgs/Pose target\_pose}
+\end{DoxyCode}
+
+\end{DoxyItemize}
+
+This service returns the last known target pose of the robot.\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysubsection{Launch File}\label{md__r_e_a_d_m_e_autotoc_md6}
+
+\begin{DoxyItemize}
+\item {\bfseries{complete\+\_\+simulation.\+launch}}\+: Launches the complete simulation environment including all necessary nodes and parameters for a predefined setup.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysection{Prerequisites}\label{md__r_e_a_d_m_e_autotoc_md7}
+Ensure you have R\+OS installed and your environment is set up with all necessary dependencies for R\+OS and this package.\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysubsection{Dependencies}\label{md__r_e_a_d_m_e_autotoc_md8}
+
+\begin{DoxyItemize}
+\item geometry\+\_\+msgs
+\item nav\+\_\+msgs
+\item actionlib
+\item rospy 
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysection{Installation}\label{md__r_e_a_d_m_e_autotoc_md9}
+Navigate to your R\+OS workspace\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd \string~/dev\_ws/src}
+\end{DoxyCode}
+
+
+Clone this repository 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git clone https://github.com/grubino22/assignment2\_rt.git}
+\end{DoxyCode}
+
+
+Change branch to \textquotesingle{}ros1\textquotesingle{} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git checkout ros1}
+\end{DoxyCode}
+
+
+Go back to your worlspace and build the package\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd \string~/dev\_ws/}
+\DoxyCodeLine{catkin\_make}
+\end{DoxyCode}
+
+
+After building, ensure your workspace is properly sourced by adding the following line to your {\ttfamily .bashrc} file\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{source \string~/dev\_ws/devel/setup.bash}
+\end{DoxyCode}
+
+
+Finally, run 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{apt-\/get install xterm}
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md10}{}\doxysection{Usage}\label{md__r_e_a_d_m_e_autotoc_md10}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysubsection{Running the Nodes}\label{md__r_e_a_d_m_e_autotoc_md11}
+To run the nodes individually, use the following commands\+:\hypertarget{md__r_e_a_d_m_e_autotoc_md12}{}\doxysubsubsection{Set Target Node}\label{md__r_e_a_d_m_e_autotoc_md12}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rosrun assignment\_2\_2024 set\_target.py}
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md13}{}\doxysubsubsection{Get Last Target Node}\label{md__r_e_a_d_m_e_autotoc_md13}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rosrun assignment\_2\_2024 get\_last\_target.py}
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md14}{}\doxysubsection{Launching the Complete Simulation}\label{md__r_e_a_d_m_e_autotoc_md14}
+To start all nodes and the simulation environment, use the launch file\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{roslaunch assignment\_2\_2024 complete\_simulation.launch}
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md15}{}\doxysection{How It Works}\label{md__r_e_a_d_m_e_autotoc_md15}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md16}{}\doxysubsection{Set Target Node}\label{md__r_e_a_d_m_e_autotoc_md16}
+Interactively allows the user to set or cancel navigation targets for the robot, responding to user input in the console. It handles user inputs to set new goals, cancel them, and provides feedback on the action\textquotesingle{}s success or failure.\hypertarget{md__r_e_a_d_m_e_autotoc_md17}{}\doxysubsection{Get Last Target Node}\label{md__r_e_a_d_m_e_autotoc_md17}
+This node listens for target goals and, upon request via a R\+OS service, provides the last set target, allowing other components or users to know where the robot was last directed.\hypertarget{md__r_e_a_d_m_e_autotoc_md18}{}\doxysection{Node Details}\label{md__r_e_a_d_m_e_autotoc_md18}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md19}{}\doxysubsection{Subscriptions}\label{md__r_e_a_d_m_e_autotoc_md19}
+
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{set__target_8py}{set\+\_\+target.\+py}}\+: Subscribes to {\ttfamily /odom} for real-\/time position updates.
+\item \mbox{\hyperlink{get__last__target_8py}{get\+\_\+last\+\_\+target.\+py}}\+: Subscribes to {\ttfamily /reaching\+\_\+goal/goal} to track the latest target goals. 
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md20}{}\doxysubsection{Publications}\label{md__r_e_a_d_m_e_autotoc_md20}
+
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{set__target_8py}{set\+\_\+target.\+py}}\+: Publishes robot\textquotesingle{}s position and velocity on {\ttfamily /robot\+\_\+position\+\_\+velocity}. 
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md21}{}\doxysubsection{Services}\label{md__r_e_a_d_m_e_autotoc_md21}
+
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{get__last__target_8py}{get\+\_\+last\+\_\+target.\+py}}\+: Provides a service {\ttfamily /get\+\_\+last\+\_\+goal} that responds with the last known target pose. 
+\end{DoxyItemize}
